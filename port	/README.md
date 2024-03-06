@@ -1,65 +1,43 @@
-# portfolio
+# port	
 
-Congratulations, you have just created a Serverless "Hello World" application using the AWS Serverless Application Model (AWS SAM) for the `nodejs16.x` runtime, and options to bootstrap it with [**Powertools for AWS Lambda (TypeScript)**](https://awslabs.github.io/aws-lambda-powertools-typescript/latest/) (Powertools for AWS Lambda (TypeScript)) utilities for Logging, Tracing and Metrics.
+Congratulations, you have just created a Serverless "Hello World" application using the AWS Serverless Application Model (AWS SAM) for the `python3.9` runtime, and options to bootstrap it with [**Powertools for AWS Lambda (Python)**](https://awslabs.github.io/aws-lambda-powertools-python/latest/) (Powertools for AWS Lambda (Python)) utilities for Logging, Tracing and Metrics.
 
-Powertools for AWS Lambda (TypeScript) is a developer toolkit to implement Serverless best practices and increase developer velocity.
+Powertools for AWS Lambda (Python) is a developer toolkit to implement Serverless best practices and increase developer velocity.
 
-## Powertools for AWS Lambda (TypeScript) features
+## Powertools for AWS Lambda (Python) features
 
-Powertools for AWS Lambda (TypeScript) provides three core utilities:
+Powertools for AWS Lambda (Python) provides three core utilities:
 
-* **[Tracer](https://awslabs.github.io/aws-lambda-powertools-typescript/latest/core/tracer/)** - Utilities to trace Lambda function handlers, and both synchronous and asynchronous functions
-* **[Logger](https://awslabs.github.io/aws-lambda-powertools-typescript/latest/core/logger/)** - Structured logging made easier, and a middleware to enrich log items with key details of the Lambda context
-* **[Metrics](https://awslabs.github.io/aws-lambda-powertools-typescript/latest/core/metrics/)** - Custom Metrics created asynchronously via CloudWatch Embedded Metric Format (EMF)
+* **[Tracing](https://awslabs.github.io/aws-lambda-powertools-python/latest/core/tracer/)** - Decorators and utilities to trace Lambda function handlers, and both synchronous and asynchronous functions
+* **[Logging](https://awslabs.github.io/aws-lambda-powertools-python/latest/core/logger/)** - Structured logging made easier, and decorator to enrich structured logging with key Lambda context details
+* **[Metrics](https://awslabs.github.io/aws-lambda-powertools-python/latest/core/metrics/)** - Custom Metrics created asynchronously via CloudWatch Embedded Metric Format (EMF)
 
-Find the complete project's [documentation here](https://awslabs.github.io/aws-lambda-powertools-typescript).
+Find the complete project's [documentation here](https://awslabs.github.io/aws-lambda-powertools-python).
 
-### Installing Powertools for AWS Lambda (TypeScript)
+### Installing Powertools for AWS Lambda (Python)
 
-You have 2 ways of consuming those utilities:
+With [pip](https://pip.pypa.io/en/latest/index.html) installed, run: 
 
-* NPM modules
-* Lambda Layer
-
-#### Lambda layers
-
-The Powertools for AWS Lambda (TypeScript) utilities is packaged as a single [AWS Lambda Layer](https://docs.aws.amazon.com/lambda/latest/dg/gettingstarted-concepts.html#gettingstarted-concepts-layer)
-
-👉 [Installation guide for the **Powertools for AWS Lambda (TypeScript)** layer](https://awslabs.github.io/aws-lambda-powertools-typescript/latest/#lambda-layer)
-
-#### NPM modules
-
-The Powertools for AWS Lambda (TypeScript) utilities follow a modular approach, similar to the official [AWS SDK v3 for JavaScript](https://github.com/aws/aws-sdk-js-v3).
-  
-Each TypeScript utility is installed as standalone NPM package.
-
-Install all three core utilities at once with this single command:
-
-```shell
-npm install @aws-lambda-powertools/logger @aws-lambda-powertools/tracer @aws-lambda-powertools/metrics
+```bash
+pip install aws-lambda-powertools
 ```
 
-Or refer to the installation guide of each utility:
+### Powertools for AWS Lambda (Python) Examples
 
-👉 [Installation guide for the **Tracer** utility](https://awslabs.github.io/aws-lambda-powertools-typescript/latest/core/tracer#getting-started)
-
-👉 [Installation guide for the **Logger** utility](https://awslabs.github.io/aws-lambda-powertools-typescript/latest/core/logger#getting-started)
-
-👉 [Installation guide for the **Metrics** utility](https://awslabs.github.io/aws-lambda-powertools-typescript/latest/core/metrics#getting-started)
-
-### Powertools for AWS Lambda (TypeScript) Examples
-
-* [CDK](https://github.com/awslabs/aws-lambda-powertools-typescript/tree/main/examples/cdk)
-* [SAM](https://github.com/awslabs/aws-lambda-powertools-typescript/tree/main/examples/sam)
+* [Tutorial](https://awslabs.github.io/aws-lambda-powertools-python/latest/tutorial)
+* [Serverless Shopping cart](https://github.com/aws-samples/aws-serverless-shopping-cart)
+* [Serverless Airline](https://github.com/aws-samples/aws-serverless-airline-booking)
+* [Serverless E-commerce platform](https://github.com/aws-samples/aws-serverless-ecommerce-platform)
+* [Serverless GraphQL Nanny Booking Api](https://github.com/trey-rosius/babysitter_api)
 
 ## Working with this project
 
 This project contains source code and supporting files for a serverless application that you can deploy with the SAM CLI. It includes the following files and folders.
 
-* hello-world - Code for the application's Lambda function written in TypeScript.
+* hello_world - Code for the application's Lambda function.
 * events - Invocation events that you can use to invoke the function.
-* hello-world/tests - Unit tests for the application code.
-* template.yaml - A template that defines the application's AWS resources.
+* tests - Unit tests for the application code.
+* template.yaml - A template that defines the application's AWS resources.  
 
 The application uses several AWS resources, including Lambda functions and an API Gateway API. These resources are defined in the `template.yaml` file in this project. You can update the template to add AWS resources through the same deployment process that updates your application code.
 
@@ -85,13 +63,13 @@ The Serverless Application Model Command Line Interface (SAM CLI) is an extensio
 To use the SAM CLI, you need the following tools.
 
 * SAM CLI - [Install the SAM CLI](https://docs.aws.amazon.com/serverless-application-model/latest/developerguide/serverless-sam-cli-install.html)
-* Node.js - [Install Node.js 16](https://nodejs.org/en/), including the NPM package management tool.
+* [Python 3 installed](https://www.python.org/downloads/)
 * Docker - [Install Docker community edition](https://hub.docker.com/search/?type=edition&offering=community)
 
 To build and deploy your application for the first time, run the following in your shell:
 
 ```bash
-sam build
+sam build --use-container
 sam deploy --guided
 ```
 
@@ -107,27 +85,27 @@ You can find your API Gateway Endpoint URL in the output values displayed after 
 
 ### Use the SAM CLI to build and test locally
 
-Build your application with the `sam build` command.
+Build your application with the `sam build --use-container` command.
 
 ```bash
-portfolio$ sam build
+port	$ sam build --use-container
 ```
 
-The SAM CLI installs dependencies defined in `hello-world/package.json`, compiles TypeScript with esbuild, creates a deployment package, and saves it in the `.aws-sam/build` folder.
+The SAM CLI installs dependencies defined in `hello_world/requirements.txt`, creates a deployment package, and saves it in the `.aws-sam/build` folder.
 
 Test a single function by invoking it directly with a test event. An event is a JSON document that represents the input that the function receives from the event source. Test events are included in the `events` folder in this project.
 
 Run functions locally and invoke them with the `sam local invoke` command.
 
 ```bash
-portfolio$ sam local invoke HelloWorldFunction --event events/event.json
+port	$ sam local invoke HelloWorldFunction --event events/event.json
 ```
 
 The SAM CLI can also emulate your application's API. Use the `sam local start-api` to run the API locally on port 3000.
 
 ```bash
-portfolio$ sam local start-api
-portfolio$ curl http://localhost:3000/
+port	$ sam local start-api
+port	$ curl http://localhost:3000/
 ```
 
 The SAM CLI reads the application template to determine the API's routes and the functions that they invoke. The `Events` property on each function's definition includes the route and method for each path.
@@ -152,19 +130,22 @@ To simplify troubleshooting, SAM CLI has a command called `sam logs`. `sam logs`
 `NOTE`: This command works for all AWS Lambda functions; not just the ones you deploy using SAM.
 
 ```bash
-portfolio$ sam logs -n HelloWorldFunction --stack-name portfolio --tail
+port	$ sam logs -n HelloWorldFunction --stack-name "port	" --tail
 ```
 
 You can find more information and examples about filtering Lambda function logs in the [SAM CLI Documentation](https://docs.aws.amazon.com/serverless-application-model/latest/developerguide/serverless-sam-cli-logging.html).
 
-### Unit tests
+### Tests
 
-Tests are defined in the `test` folder in this project.
+Tests are defined in the `tests` folder in this project. Use PIP to install the test dependencies and run tests.
 
 ```bash
-portfolio$ cd hello-world
-hello-world$ npm install
-hello-world$ npm run test
+port	$ pip install -r tests/requirements.txt --user
+# unit test
+port	$ python -m pytest tests/unit -v
+# integration test, requiring deploying the stack first.
+# Create the env variable AWS_SAM_STACK_NAME with the name of the stack we are testing
+port	$ AWS_SAM_STACK_NAME="port	" python -m pytest tests/integration -v
 ```
 
 ### Cleanup
@@ -172,7 +153,7 @@ hello-world$ npm run test
 To delete the sample application that you created, use the AWS CLI. Assuming you used your project name for the stack name, you can run the following:
 
 ```bash
-sam delete --stack-name portfolio
+sam delete --stack-name "port	"
 ```
 
 ## Resources
